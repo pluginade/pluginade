@@ -14,7 +14,7 @@ Run phpunit, eslint, and stylelint using WordPress Coding Standards for any Word
 	},
 	"pluginade_options": "-n YourPluginNamespace -t your-plugin-textdomain",
 	"scripts": {
-		"preinstall": "if [ ! -d ../../pluginade ]; then git clone https://github.com/wp-plugin-sidekick/pluginade ../../pluginade; else cd ../../pluginade && git reset --hard && git checkout main && git pull origin main;fi;",
+		"preinstall": "if [ ! -d ../../pluginade ]; then git clone https://github.com/pluginade/pluginade ../../pluginade; else cd ../../pluginade && git reset --hard && git checkout main && git pull origin main;fi;",
 		"postinstall": "cd ../../pluginade; sh install.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
 		"reinstall": "cd ../../pluginade; sh install-clean.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
 		"dev": "cd ../../pluginade; sh dev.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
