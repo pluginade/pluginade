@@ -1,7 +1,7 @@
 {
 	"mappings": {
 		"wp-content/plugins/REPLACE_WITH_PLUGIN_DIR_NAME": "PATH_TO_PLUGIN_BEING_TESTED",
-		"wp-content/wpps-scripts": "./"
+		"wp-content/pluginade": "./"
 	},
 	"port": 1000,
 	"testsPort": 1001,

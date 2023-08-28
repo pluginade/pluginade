@@ -1,9 +1,9 @@
 {
-	"name": "wpps-scripts",
+	"name": "pluginade",
 	"version": "1.0.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/wp-plugin-sidekick/wpps-scripts"
+		"url": "https://github.com/wp-plugin-sidekick/pluginade"
 	},
 	"scripts": {
 		"format": "wp-scripts format",

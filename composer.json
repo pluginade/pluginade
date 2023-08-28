@@ -1,7 +1,7 @@
 {
-	"name": "wp-plugin-sidekick/wp-plugin-sidekick",
+	"name": "pluginade/pluginade",
 	"type": "wordpress-plugin",
-	"description": "An interface for building WordPress plugins and themes",
+	"description": "The refreshingly easy way to build WordPress plugins.",
 	"license": "GPL-2.0",
 	"require": {
 		"php": "^7.3||^8.0",
