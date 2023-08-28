@@ -14,20 +14,20 @@ Run phpunit, eslint, and stylelint using WordPress Coding Standards for any Word
 	},
 	"pluginade_options": "-n YourPluginNamespace -t your-plugin-textdomain",
 	"scripts": {
-		"preinstall": "if [ ! -d ./../../pluginade ]; then git clone https://github.com/wp-plugin-sidekick/pluginade ./../../pluginade; else cd ./../../pluginade && git reset --hard && git checkout main && git pull origin main;fi;",
-		"postinstall": "cd ./../../pluginade; sh install.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
-		"reinstall": "cd ./../../pluginade; sh install-clean.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
-		"dev": "cd ./../../pluginade; sh dev.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
-		"build": "cd ./../../pluginade; sh build.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
-		"test:phpunit": "cd ./../../pluginade; sh phpunit.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
-		"lint:php": "cd ./../../pluginade; sh phpcs.sh $npm_package_pluginade_options -p ${OLDPWD};",
-		"lint:php:fix": "cd ./../../pluginade; sh phpcs.sh $npm_package_pluginade_options -p \"${OLDPWD}\" -f 1;",
-		"lint:js": "cd ./../../pluginade; sh lint-js.sh $npm_package_pluginade_options -p \"${OLDPWD}\"",
-		"lint:js:fix": "cd ./../../pluginade; sh lint-js.sh $npm_package_pluginade_options -p \"${OLDPWD}\" -f 1;",
-		"lint:css": "cd ./../../pluginade; sh lint-css.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
-		"lint:css:fix": "cd ./../../pluginade; sh lint-css.sh $npm_package_pluginade_options -p \"${OLDPWD}\" -f 1;",
-		"test:js": "cd ./../../pluginade; sh test-js.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
-		"zip": "cd ./../../pluginade; sh zip.sh $npm_package_pluginade_options -p \"${OLDPWD}\";"
+		"preinstall": "if [ ! -d ../../pluginade ]; then git clone https://github.com/wp-plugin-sidekick/pluginade ../../pluginade; else cd ../../pluginade && git reset --hard && git checkout main && git pull origin main;fi;",
+		"postinstall": "cd ../../pluginade; sh install.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"reinstall": "cd ../../pluginade; sh install-clean.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"dev": "cd ../../pluginade; sh dev.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"build": "cd ../../pluginade; sh build.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"test:phpunit": "cd ../../pluginade; sh phpunit.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"lint:php": "cd ../../pluginade; sh phpcs.sh $npm_package_pluginade_options -p ${OLDPWD};",
+		"lint:php:fix": "cd ../../pluginade; sh phpcs.sh $npm_package_pluginade_options -p \"${OLDPWD}\" -f 1;",
+		"lint:js": "cd ../../pluginade; sh lint-js.sh $npm_package_pluginade_options -p \"${OLDPWD}\"",
+		"lint:js:fix": "cd ../../pluginade; sh lint-js.sh $npm_package_pluginade_options -p \"${OLDPWD}\" -f 1;",
+		"lint:css": "cd ../../pluginade; sh lint-css.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"lint:css:fix": "cd ../../pluginade; sh lint-css.sh $npm_package_pluginade_options -p \"${OLDPWD}\" -f 1;",
+		"test:js": "cd ../../pluginade; sh test-js.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"zip": "cd ../../pluginade; sh zip.sh $npm_package_pluginade_options -p \"${OLDPWD}\";"
 	}
 }
 ```
