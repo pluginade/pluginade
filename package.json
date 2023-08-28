@@ -16,7 +16,7 @@
 		"test:js": "wp-scripts test-unit-js"
 	},
 	"devDependencies": {
-		"@wordpress/env": "^7.0.0",
+		"@wordpress/env": "^8.0.0",
 		"@wordpress/eslint-plugin": "^12.4.0",
 		"@wordpress/jest-preset-default": "^8.1.1",
 		"@wordpress/scripts": "24.0.0"

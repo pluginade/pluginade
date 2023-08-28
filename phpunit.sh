@@ -14,5 +14,5 @@ sed -i.bak "s/REPLACE_WITH_PLUGIN_DIR_NAME/$plugindirname/g" .wp-env.json
 npx -p @wordpress/env wp-env start
 
 # Run PHPunit inside wp-env, targeting the plugin in question.
-npx -p @wordpress/env wp-env run --env-cwd=\"wp-content/pluginade\" tests-wordpress phpunit -c ./phpunit.xml.dist /var/www/html/wp-content/plugins/$plugindirname
+npx -p @wordpress/env wp-env run --env-cwd='wp-content/pluginade' tests-wordpress vendor/bin/phpunit -c ./phpunit.xml.dist /var/www/html/wp-content/plugins/$plugindirname
 
