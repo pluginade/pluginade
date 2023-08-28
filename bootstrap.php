@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package WPPS
+ * @package PLUGINADE
  */
 
 // Require composer dependencies.
