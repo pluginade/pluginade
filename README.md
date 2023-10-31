@@ -18,6 +18,7 @@ Run phpunit, eslint, and stylelint using WordPress Coding Standards for any Word
 		"postinstall": "cd ../../pluginade; sh install.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
 		"reinstall": "cd ../../pluginade; sh install-clean.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
 		"dev": "cd ../../pluginade; sh dev.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
+		"dev-env": "cd ../../pluginade; sh dev-env.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
 		"build": "cd ../../pluginade; sh build.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
 		"test:phpunit": "cd ../../pluginade; sh phpunit.sh $npm_package_pluginade_options -p \"${OLDPWD}\";",
 		"lint:php": "cd ../../pluginade; sh phpcs.sh $npm_package_pluginade_options -p ${OLDPWD};",
