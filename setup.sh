@@ -15,7 +15,18 @@ plugindirname=$(basename "$plugindir")
 nodeversion=$( node -v );
 if [[ $nodeversion != v14* ]]; then
 	echo "Your version of node needs to be v14, but it is set to be "$nodeversion;
-	exit 1;
+	echo "Checking available versions before automatically switching...";
+
+	source ~/.nvm/nvm.sh
+	availablenodeversions=$( nvm ls );
+	if [[ ${availablenodeversions[*]} =~ v14* ]];
+		then
+			echo "v14 found. Switching your current version...";
+			nvm use 14;
+		else
+			echo "Please install node v14, then run this script again.";
+			exit 1;
+	fi
 fi
 
 # Install dependencies.
