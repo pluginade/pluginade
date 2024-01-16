@@ -16,6 +16,17 @@ for DIR in "$plugindir"/wp-modules/*; do
 			npm install;
 		fi;
 	fi
+	
+	# If this module has a composer.json file.
+	if [ -f "$DIR/composer.json" ];
+	then
+		# Go to the directory of this wp-module.
+		cd "$DIR";
+		
+		if [ ! -d vendor ]; then
+			composer install;
+		fi
+	fi
 
 done
 

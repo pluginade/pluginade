@@ -13,6 +13,15 @@ for DIR in "$plugindir"/wp-modules/*; do
 		# Run npm install for this module.
 		npm ci;
 	fi
+	# If this module has a composer.json file.
+	if [ -f "$DIR/composer.json" ];
+	then
+		# Go to the directory of this wp-module.
+		cd "$DIR";
+		
+		# Run composer install for this module.
+		composer install;
+	fi
 
 done
 

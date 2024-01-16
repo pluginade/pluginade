@@ -19,6 +19,17 @@ for DIR in "$plugindir"/wp-modules/*; do
 		npm run dev &
 	fi
 
+	# If this module has a composer.json file.
+	if [ -f "$DIR/composer.json" ];
+	then
+		# Go to the directory of this wp-module.
+		cd "$DIR";
+		
+		if [ ! -d vendor ]; then
+			composer install &
+		fi
+	fi
+
 done
 
 # Finish with a wait command, which lets a kill (cmd+c) kill all of the process created in this loop.

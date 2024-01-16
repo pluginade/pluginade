@@ -1,18 +1,32 @@
 #!/bin/bash
 
-# Run setup.
-. ./setup.sh
+# Don't run setup. It's different for phpunit (no node needed, etc).
+# . ./setup.sh
+while getopts 'p:n:t:f:' flag; do
+	case "${flag}" in
+		p) plugindir=${OPTARG} ;;
+		n) namespace=${OPTARG} ;;
+		t) textdomain=${OPTARG} ;;
+		f) fix=${OPTARG} ;;
+	esac
+done
 
-# Duplicate the .wp-env.json boiler, and call it .wp-env.json.
-cp wp-env-boiler.json .wp-env.json
+# If no plugin path is provided, then we assume that the plugin is mounted as a volume into the Docker container at /usr/src/pluginade/plugin
+if [ ! -d "$plugindir" ]; then
+	# The plugin is mounted as a volume into the Docker container at /usr/src/pluginade/plugin
+	plugindir=/usr/src/pluginade/plugin
+fi
 
-# Modify the .wp-env.json file in the pluginade module to contain the path to the plugin in question.
-sed -i.bak "s~PATH_TO_PLUGIN_BEING_TESTED~$plugindir~g" .wp-env.json
-sed -i.bak "s/REPLACE_WITH_PLUGIN_DIR_NAME/$plugindirname/g" .wp-env.json
+plugindirname=$(basename "$plugindir")
 
-# Start wp-env
-npx -p @wordpress/env wp-env start
+# Go to the wordpress directory inside the Docker Container
+cd /var/www/html;
 
-# Run PHPunit inside wp-env, targeting the plugin in question.
-npx -p @wordpress/env wp-env run --env-cwd='wp-content/pluginade' tests-wordpress vendor/bin/phpunit -c ./phpunit.xml.dist /var/www/html/wp-content/plugins/$plugindirname
+wp db create --allow-root;
 
+wp core install --url=localhost:8080 --title="Pluginade Test Site" --admin_user=admin --admin_password=password --admin_email=test@example.com --allow-root;
+
+cd /usr/src/pluginade/pluginade-scripts;
+composer install;
+
+vendor/bin/phpunit -c ./phpunit.xml.dist /var/www/html/wp-content/plugins/$plugindirname

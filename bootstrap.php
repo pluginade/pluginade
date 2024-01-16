@@ -5,6 +5,8 @@
  * @package PLUGINADE
  */
 
+putenv( 'WP_PHPUNIT__TESTS_CONFIG=/usr/src/pluginade/pluginade-scripts/docker-phpunit/wp-tests-config.php' );
+
 // Require composer dependencies.
 require_once 'vendor/autoload.php';
 
@@ -45,6 +47,7 @@ function _manually_load_plugin() {
 
 	echo 'Included plugins:';
 	foreach ( $plugins as $plugin ) {
+		echo $plugin;
 		$plugin_name = basename( $plugin );
 		$filename    = $plugin_name . '.php';
 		$filepath    = $plugin . '/' . $filename;
