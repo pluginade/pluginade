@@ -41,6 +41,9 @@ if [ "$INCLUDE_NODE_MODULES" = "0" ]; then
 	done
 fi
 
+# Add a fake volume inside the plugin at .pluginade just in case pluginade has been cloned inside the plugin itself.
+VOLUME_STRING="$VOLUME_STRING -v $PLUGIN_PATH/.pluginade"
+
 # Run the docker container.
 if [ "$SHOWPLUGSIERDETAILS" = "1" ]; then
 	echo '-------'
