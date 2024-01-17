@@ -14,9 +14,13 @@ CWD=$(pwd)
 
 WORKDIR='/usr/src/pluginade/pluginade-scripts/'
 
+PLUGIN_BASENAME=$(basename "$PLUGIN_PATH")
+
 # Modify the docker-compose.yml file to include the volumes we want.
 cp docker-compose-boiler.yml docker-compose.yml
 sed -i.bak "s~LOCAL_PATH_TO_PLUGIN~$PLUGIN_PATH~g" docker-compose.yml
+sed -i.bak "s~BASENAME_OF_PLUGIN~$PLUGIN_BASENAME~g" docker-compose.yml
+
 		
 # if [ "$INCLUDE_NODE_MODULES" = "0" ]; then
 

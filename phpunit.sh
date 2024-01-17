@@ -11,12 +11,6 @@ while getopts 'p:n:t:f:' flag; do
 	esac
 done
 
-# If no plugin path is provided, then we assume that the plugin is mounted as a volume into the Docker container at /usr/src/pluginade/plugin
-if [ ! -d "$plugindir" ]; then
-	# The plugin is mounted as a volume into the Docker container at /usr/src/pluginade/plugin
-	plugindir=/usr/src/pluginade/plugin
-fi
-
 plugindirname=$(basename "$plugindir")
 
 # Go to the wordpress directory inside the Docker Container
