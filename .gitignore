@@ -9,3 +9,5 @@ build
 /.wp-env.json
 /.wp-env.json.bak
 .phpunit.result.cache
+/docker-phpunit/docker-compose.yml.bak
+/docker-phpunit/docker-compose.yml
