@@ -38,6 +38,8 @@ sed -i.bak "s~LOCAL_PATH_TO_PLUGIN~$PLUGIN_PATH~g" docker-compose.yml
 # 	done
 # fi
 
+docker-compose build
+
 # Run the docker container.
 docker-compose up --build -d
 
