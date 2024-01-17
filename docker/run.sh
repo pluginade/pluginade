@@ -16,13 +16,28 @@ WORKDIR='/usr/src/pluginade/pluginade-scripts/'
 
 PLUGINBASENAME=$(basename "$PLUGIN_PATH")
 
+#  Set up the downloads directory as a volume for the zip command, so we can put built zips there.
+os_type="$(uname -s)"
+
+if [ "$os_type" == "Linux" ]; then
+	DOWNLOADSDIRECTORY="$HOME/Downloads"
+elif [ "$os_type" == "Darwin" ]; then
+	DOWNLOADSDIRECTORY="$HOME/Downloads"
+elif [[ "$os_type" == MINGW* || "$os_type" == CYGWIN* ]]; then
+	DOWNLOADSDIRECTORY="/c/Users/$(whoami)/Downloads"
+else
+	# Default to the plugin's zips directory.
+	DOWNLOADSDIRECTORY=$PLUGIN_PATH/zips;
+fi
+
 # Define the volumes to mount
 PLUGSIER_SCRIPTS_VOLUME="$(dirname "$CWD")"":/usr/src/pluginade/pluginade-scripts"
 PLUGIN_VOLUME="$PLUGIN_PATH:/$PLUGINBASENAME"
+DOWNLOADSDIRECTORY_VOLUME="$DOWNLOADSDIRECTORY"":/downloads"
 
 # Build the string of volumes we want for this container.
-VOLUME_STRING="-v $PLUGSIER_SCRIPTS_VOLUME -v $PLUGIN_VOLUME"
-		
+VOLUME_STRING="-v $PLUGSIER_SCRIPTS_VOLUME -v $PLUGIN_VOLUME -v $DOWNLOADSDIRECTORY_VOLUME"
+
 if [ "$INCLUDE_NODE_MODULES" = "0" ]; then
 
 	if [ -f "$PLUGIN_PATH/package.json" ];
@@ -45,6 +60,9 @@ fi
 
 # Add a fake volume inside the plugin at .pluginade just in case pluginade has been cloned inside the plugin itself.
 VOLUME_STRING="$VOLUME_STRING -v /$PLUGINBASENAME/.pluginade"
+
+# Build the docker container.
+. ./build.sh
 
 # Run the docker container.
 if [ "$SHOWPLUGSIERDETAILS" = "1" ]; then
