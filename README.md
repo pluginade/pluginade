@@ -5,7 +5,7 @@ It allows you to instantly run PHP WordPress Coding Standards, phpunit, eslint, 
 
 ## Getting Started
 
-### Create and commit this file to your WordPress plugin's root directory, and call it pluginade.sh
+#### Create and commit this file to your WordPress plugin's root directory, and call it pluginade.sh
 [Link to pluginade.sh file](https://raw.githubusercontent.com/pluginade/pluginade/docker/pluginade.sh)
 
 In the file above, simply replace these strings:
@@ -15,7 +15,7 @@ In the file above, simply replace these strings:
 
 Then, on the command line inside your plugin, run one of the following commands:
 
-### To lint your plugin's PHP code using WordPress Coding Standards, run this command:
+#### To lint your plugin's PHP code using WordPress Coding Standards, run this command:
 `sh pluginade.sh lint:php`
 
 If you want to override any WordPress Coding Standards for your project, add your own custom phpcs.xml file to the root of your plugin, and Pluginade will use that.
