@@ -3,90 +3,10 @@ Pluginade Scripts is a simple solution for adding linting, testing, zipping, and
 
 It allows you to instantly run PHP WordPress Coding Standards, phpunit, eslint, stylelint and more, on any machine that supports Docker.
 
-# Getting Started
+## Getting Started
 
-## Create and commit this file to your WordPress plugin's root directory, and call it pluginade.sh
-```
-#!/bin/bash
-
-# Change the following variables to your plugin's namespace and textdomain:
-textdomain="my-plugin-text-domain";
-namespace="MyPluginNamespace";
-
-# Dont make any more edits below this line.
-
-# Check if an argument is provided
-if [ -z "$1" ]; then
-    echo "Usage: $0 <The pluginade command you want to run>"
-    exit 1
-fi
-
-#  Set the plugin directory to be the current directory.
-plugindir=$(pwd);
-
-#  Install pluginade-scripts if they are not already installed.
-if [ ! -d ./pluginade ]; then git clone https://github.com/pluginade/pluginade ./.pluginade; cd .pluginade && git reset --hard && git checkout docker && git pull origin docker; fi;
-
-#  Start dev mode (npm run dev) for all wp-modules.
-if [ $1 == 'dev' ]; then
-	# Run PHP Code Sniffer with WordPress Coding Standards.
-	sh pluginade-run.sh -p "${plugindir}" -c "dev" -t $textdomain -n $namespace;
-fi
-
-#  Run build (npm run build) for all wp-modules.
-if [ $1 == 'build' ]; then
-	# Run PHP Code Sniffer with WordPress Coding Standards.
-	sh pluginade-run.sh -p "${plugindir}" -c "build" -t $textdomain -n $namespace;
-fi
-
-#  PHP Linting. To run this, type: sh pluginade.sh lint:php
-if [ $1 == 'lint:php' ]; then
-	# Run PHP Code Sniffer with WordPress Coding Standards.
-	sh pluginade-run.sh -p "${plugindir}" -c "lint:php" -t $textdomain -n $namespace;
-fi
-
-# PHP Lint Fixing. To run this, type: sh pluginade.sh lint:php:fix
-if [ $1 == 'lint:php:fix' ]; then
-	sh pluginade-run.sh -p "${plugindir}" -c "lint:php:fix" -t $textdomain -n $namespace;
-fi
-
-#  CSS Linting. To run this, type: sh pluginade.sh lint:css
-if [ $1 == 'lint:css' ]; then
-	# Run CSS linting.
-	sh pluginade-run.sh -p "${plugindir}" -c "lint:css" -t $textdomain -n $namespace;
-fi
-
-# CSS Lint Fixing. To run this, type: sh pluginade.sh lint:css:fix
-if [ $1 == 'lint:css:fix' ]; then
-	# Run CSS linting.
-	sh pluginade-run.sh -p "${plugindir}" -c "lint:css:fix" -t $textdomain -n $namespace;
-fi
-
-#  JS Linting. To run this, type: sh pluginade.sh lint:js
-if [ $1 == 'lint:js' ]; then
-	sh pluginade-run.sh -p "${plugindir}" -c "lint:js" -t $textdomain -n $namespace;
-fi
-
-# JS Lint Fixing. To run this, type: sh pluginade.sh lint:js:fix
-if [ $1 == 'lint:js:fix' ]; then
-	sh pluginade-run.sh -p "${plugindir}" -c "lint:js:fix" -t $textdomain -n $namespace;
-fi
-
-# JS Jest Testing. To run this, type: sh pluginade.sh test:js
-if [ $1 == 'test:js' ]; then
-	sh pluginade-run.sh -p "${plugindir}" -c "test:js" -t $textdomain -n $namespace;
-fi
-
-# PHP Unit Testing. To run this, type: sh pluginade.sh test:phpunit
-if [ $1 == 'test:phpunit' ]; then
-	sh pluginade-run.sh -p "${plugindir}" -c "test:phpunit" -t $textdomain -n $namespace;
-fi
-
-# Build an installable zip. To run this, type: sh pluginade.sh zip
-if [ $1 == 'zip' ]; then
-	sh pluginade-run.sh -p "${plugindir}" -c "zip" -t $textdomain -n $namespace;
-fi
-```
+### Create and commit this file to your WordPress plugin's root directory, and call it pluginade.sh
+[Link to pluginade.sh file](https://raw.githubusercontent.com/pluginade/pluginade/docker/pluginade.sh)
 
 In the file above, simply replace these strings:
 
