@@ -13,10 +13,12 @@ done
 CWD=$(pwd)
 
 WORKDIR='/usr/src/pluginade/pluginade-scripts/'
-	
+
+PLUGINBASENAME=$(basename "$PLUGIN_PATH")
+
 # Define the volumes to mount
 PLUGSIER_SCRIPTS_VOLUME="$(dirname "$CWD")"":/usr/src/pluginade/pluginade-scripts"
-PLUGIN_VOLUME="$PLUGIN_PATH:/usr/src/pluginade/plugin"
+PLUGIN_VOLUME="$PLUGIN_PATH:/$PLUGINBASENAME"
 
 # Build the string of volumes we want for this container.
 VOLUME_STRING="-v $PLUGSIER_SCRIPTS_VOLUME -v $PLUGIN_VOLUME"
@@ -25,7 +27,7 @@ if [ "$INCLUDE_NODE_MODULES" = "0" ]; then
 
 	if [ -f "$PLUGIN_PATH/package.json" ];
 	then
-		VOLUME_STRING="$VOLUME_STRING -v /usr/src/pluginade/plugin/node_modules"
+		VOLUME_STRING="$VOLUME_STRING -v /$PLUGINBASENAME/node_modules"
 	fi
 
 	# Loop through each wp-module in the plugin, and create a fake volume where the node_modules directory lives.
@@ -35,14 +37,14 @@ if [ "$INCLUDE_NODE_MODULES" = "0" ]; then
 		if [ -f "$DIR/package.json" ];
 		then
 			MODULE_DIR_NAME="${DIR##*/}"
-			VOLUME_STRING="$VOLUME_STRING -v /usr/src/pluginade/plugin/wp-modules/$MODULE_DIR_NAME/node_modules"
+			VOLUME_STRING="$VOLUME_STRING -v /$PLUGINBASENAME/wp-modules/$MODULE_DIR_NAME/node_modules"
 		fi
 	
 	done
 fi
 
 # Add a fake volume inside the plugin at .pluginade just in case pluginade has been cloned inside the plugin itself.
-VOLUME_STRING="$VOLUME_STRING -v /usr/src/pluginade/plugin/.pluginade"
+VOLUME_STRING="$VOLUME_STRING -v /$PLUGINBASENAME/.pluginade"
 
 # Run the docker container.
 if [ "$SHOWPLUGSIERDETAILS" = "1" ]; then
