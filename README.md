@@ -1,3 +1,6 @@
+# NOTE: This project has been replace by Pluginade Scripts
+This project has been moved and replaced by [pluginade-scripts](https://github.com/pluginade/pluginade-scripts)
+
 # Pluginade
 
 Run phpunit, eslint, and stylelint using WordPress Coding Standards for any WordPress plugin by setting up your package.json file like this:
